@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.PostUpdate;
 import java.util.List;
 import java.util.Optional;
 
@@ -54,12 +55,17 @@ public class TrackController
         return new ResponseEntity<>(deletedTrack,HttpStatus.OK);
     }
 
+    @PostUpdate
     public ResponseEntity<?> updateTrackById(@RequestParam int trackId, @RequestBody Track updateTrack)
     {
         Track updatedTrack = trackService.updateTrackById(trackId,updateTrack);
         return new ResponseEntity<>(updatedTrack,HttpStatus.OK);
     }
 
-
-
+    @GetMapping("tracks/{trackName}")
+    public ResponseEntity<?> findTrackByName(@PathVariable String trackName)
+    {
+        List<Track> foundTrack = trackService.findTrackByName(trackName);
+        return new ResponseEntity<>(foundTrack,HttpStatus.FOUND);
+    }
 }
