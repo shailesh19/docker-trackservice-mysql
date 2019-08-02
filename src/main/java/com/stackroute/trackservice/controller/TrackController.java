@@ -55,7 +55,7 @@ public class TrackController
         return new ResponseEntity<>(deletedTrack,HttpStatus.OK);
     }
 
-    @PostUpdate
+    @PostUpdate("track/{trackId")
     public ResponseEntity<?> updateTrackById(@RequestParam int trackId, @RequestBody Track updateTrack)
     {
         Track updatedTrack = trackService.updateTrackById(trackId,updateTrack);
