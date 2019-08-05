@@ -28,7 +28,7 @@ public class TrackServiceImpl implements TrackService {
     }
 
     @Override
-    public Track getTrackbyId(int trackId) throws TrackNotFoundException          // Get Track by Id
+    public Track getTrackById(int trackId) throws TrackNotFoundException          // Get Track by Id
     {
         if (trackRepository.existsById(trackId))
         {
