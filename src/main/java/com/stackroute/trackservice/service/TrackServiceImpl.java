@@ -70,8 +70,10 @@ public class TrackServiceImpl implements TrackService
     @Override
     public Track updateTrackById(int trackId, Track trackToUpdate)         // Update Track by Id
     {
-        trackRepository.findById(trackId).get().setTrackName(trackToUpdate.getTrackName());
-        return trackRepository.save(trackRepository.findById(trackId).get());
+        Track trackToBeUpdated=trackRepository.findById(trackId).get();
+        trackToBeUpdated.setTrackName(trackToUpdate.getTrackName());
+        trackToBeUpdated.setComments(trackToUpdate.getComments());
+        return trackRepository.save(trackToBeUpdated);
     }
 
     @Override
