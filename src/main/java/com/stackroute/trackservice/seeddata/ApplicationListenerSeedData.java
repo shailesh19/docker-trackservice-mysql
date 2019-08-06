@@ -19,19 +19,14 @@ public class ApplicationListenerSeedData implements ApplicationListener<ContextR
         this.trackRepository = trackRepository;
     }
 
-//    @Override
-//    public void onApplicationEvent(ApplicationEvent applicationEvent)
-//    {
-//        Track track1 = new Track(01,"Wow","Playlist 101");
-//        trackRepository.save(track1);
-//        Track track2 = new Track(02,"Celebrate","Playlist 101");
-//        trackRepository.save(track2);
-//        Track track3 = new Track(03,"Friday","Punjabi 101");
-//        trackRepository.save(track3);
-//    }
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
-
+        Track track1 = new Track(01,"Wow","Playlist 101");
+        trackRepository.save(track1);
+        Track track2 = new Track(02,"Celebrate","Playlist 101");
+        trackRepository.save(track2);
+        Track track3 = new Track(03,"Friday","Punjabi 101");
+        trackRepository.save(track3);
     }
 }

@@ -13,32 +13,38 @@ public class TrackDummyServiceImpl implements TrackService
 {
 
     @Override
-    public Track saveTrack(Track track) throws TrackAlreadyExistsException {
+    public Track saveTrack(Track track) throws TrackAlreadyExistsException
+    {
         return null;
     }
 
     @Override
-    public Track getTrackById(int trackId) throws TrackNotFoundException {
+    public Track getTrackById(int trackId) throws TrackNotFoundException
+    {
         return null;
     }
 
     @Override
-    public List<Track> getAllTracks() throws Exception {
+    public List<Track> getAllTracks() throws Exception
+    {
         return null;
     }
 
     @Override
-    public Optional deleteTrackById(int trackId) throws TrackNotFoundException {
+    public Optional deleteTrackById(int trackId) throws TrackNotFoundException
+    {
         return Optional.empty();
     }
 
     @Override
-    public Track updateTrackById(int trackId, Track trackToUpdate) {
+    public Track updateTrackById(int trackId, Track trackToUpdate)
+    {
         return null;
     }
 
     @Override
-    public List<Track> findTrackByName(String trackName) {
+    public List<Track> findTrackByName(String trackName)
+    {
         return null;
     }
 }
