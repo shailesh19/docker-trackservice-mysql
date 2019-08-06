@@ -90,16 +90,16 @@ public class TrackController
         ResponseEntity responseEntity;
 //        try
 //        {
+            Optional deletedTrack = trackService.deleteTrackById(trackID);
             trackService.deleteTrackById(trackID);
-            responseEntity = new ResponseEntity("Track Deleted",HttpStatus.OK);
-//            return new ResponseEntity<>(deletedTrack,HttpStatus.OK);
+//            responseEntity = new ResponseEntity("Track Deleted",HttpStatus.OK);
+            return new ResponseEntity<>(deletedTrack,HttpStatus.OK);
 //        }
 //        catch (TrackNotFoundException tnf)
 //        {
 //            responseEntity = new ResponseEntity(tnf.getMessage(),HttpStatus.CONFLICT);
 //            tnf.printStackTrace();
 //        }
-        return responseEntity;
     }
 
     @PutMapping("track/{trackId}")
