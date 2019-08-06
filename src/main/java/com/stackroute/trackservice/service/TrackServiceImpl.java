@@ -4,13 +4,16 @@ import com.stackroute.trackservice.domain.Track;
 import com.stackroute.trackservice.exceptions.TrackAlreadyExistsException;
 import com.stackroute.trackservice.exceptions.TrackNotFoundException;
 import com.stackroute.trackservice.repository.TrackRepository;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class TrackServiceImpl implements TrackService {
+@Profile("main")
+public class TrackServiceImpl implements TrackService
+{
     private TrackRepository trackRepository;
 
     public TrackServiceImpl(TrackRepository trackRepository) {
@@ -72,7 +75,8 @@ public class TrackServiceImpl implements TrackService {
     }
 
     @Override
-    public List<Track> findTrackByName(String trackName) {
+    public List<Track> findTrackByName(String trackName)                    // Find track by name
+    {
         List<Track> foundTrack = trackRepository.findByTrackName(trackName);
         return (List<Track>) foundTrack;
     }

@@ -5,6 +5,7 @@ import com.stackroute.trackservice.exceptions.TrackAlreadyExistsException;
 import com.stackroute.trackservice.exceptions.TrackNotFoundException;
 import com.stackroute.trackservice.service.TrackService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +25,7 @@ public class TrackController
     }
 
     @Autowired
-    public TrackController(TrackService trackService)
+    public TrackController(@Qualifier("TrackDummyServiceImpl") TrackService trackService)
     {
         this.trackService = trackService;
     }
@@ -92,7 +93,7 @@ public class TrackController
 //        {
             trackService.deleteTrackById(trackID);
             responseEntity = new ResponseEntity("Track Deleted",HttpStatus.OK);
-////            return new ResponseEntity<>(deletedTrack,HttpStatus.OK);
+//            return new ResponseEntity<>(deletedTrack,HttpStatus.OK);
 //        }
 //        catch (TrackNotFoundException tnf)
 //        {
