@@ -9,6 +9,7 @@ import java.util.Optional;
 
 public interface TrackService
 {
+    //Defining methods
     public Track saveTrack(Track track) throws TrackAlreadyExistsException;
     public Track getTrackById(int trackId) throws TrackNotFoundException;
     public List<Track> getAllTracks() throws Exception;

@@ -5,7 +5,6 @@ import com.stackroute.trackservice.exceptions.TrackAlreadyExistsException;
 import com.stackroute.trackservice.exceptions.TrackNotFoundException;
 import com.stackroute.trackservice.service.TrackService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+//Using @RestController for creating RESTful controller.
 @RequestMapping("api/v1/")
 public class TrackController
 {
@@ -29,6 +29,7 @@ public class TrackController
         this.trackService = trackService;
     }
 
+    //Using PostMapping to put values in the database
     @PostMapping("track")
     public ResponseEntity<?> saveTrack(@RequestBody Track track) throws TrackAlreadyExistsException
     {
@@ -40,6 +41,7 @@ public class TrackController
         return responseEntity;
     }
 
+    //Using GetMapping to find track on the basis of trackId
     @GetMapping("track/{trackId}")
     public ResponseEntity<?> getTrackById(@PathVariable int trackId) throws TrackNotFoundException
     {
@@ -51,6 +53,7 @@ public class TrackController
         return responseEntity;
     }
 
+    //Using GetMapping to find all tracks
     @GetMapping("alltrack")
     public ResponseEntity<?> getAllTracks() throws Exception
     {
@@ -62,6 +65,7 @@ public class TrackController
         return responseEntity;
     }
 
+    //Using DeleteMapping to delete a particular track on the basis of trackId
     @DeleteMapping("deletetrack/{trackID}")
     public ResponseEntity<?> deleteTrackById(@PathVariable int trackID) throws TrackNotFoundException
     {
@@ -72,6 +76,7 @@ public class TrackController
             return new ResponseEntity<>(deletedTrack,HttpStatus.OK);
     }
 
+    //Using PutMapping to update track in the database using trackId
     @PutMapping("track/{trackId}")
     public ResponseEntity<?> updateTrackById(@PathVariable int trackId, @RequestBody Track updateTrack)
     {
@@ -79,6 +84,7 @@ public class TrackController
         return new ResponseEntity<>(updatedTrack,HttpStatus.OK);
     }
 
+    //Using GetMapping to find track details on the basis of trackName
     @GetMapping("tracks/{trackName}")
     public ResponseEntity<?> findTrackByName(@PathVariable String trackName)
     {
